@@ -8,31 +8,20 @@ package com.bridgelabz.moodanalyser;
 
 public class MoodAnalyser {
 
-	public static String message;
-
-	// Constructor
-	public MoodAnalyser(String message) {
-		MoodAnalyser.message = message;
-		analyseMood();
-	}
-
-	public static String getMessage() {
-		return message;
-	}
-
-	public static void setMessage(String message) {
-		MoodAnalyser.message = message;
-	}
-
-	public static String analyseMood() {
-		try {
-			if (message.toLowerCase().contains("sad")) {
-				return "Sad";
-			} else {
-				return "Happy";
-			}
-		} catch (NullPointerException e) {
+	public static String analyseMood(String message) {
+		if (message.toLowerCase().contains("sad")) {
+			return "Sad";
+		} else if (message.toLowerCase().contains("happy")) {
 			return "Happy";
 		}
+		return null;
 	}
+
+	public static void main(String[] args) {
+		String mood = MoodAnalyser.analyseMood("User is Happy");
+		System.out.println(mood);
+		mood = MoodAnalyser.analyseMood("User is Sad");
+		System.out.println(mood);
+	}
+
 }
