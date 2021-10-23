@@ -7,20 +7,15 @@ package com.bridgelabz.moodanalyser;
  */
 
 public class MoodAnalyser {
+	public static String message;
 
-	public String message;
-
-	/**
-	 *  Constructor
-	 */
+	// Constructor
 	public MoodAnalyser(String message) {
 		this.message = message;
 		analyseMood();
 	}
 
-	/**
-	 *  Getter
-	 */
+	// Getter
 	public String getMessage() {
 		return message;
 	}
@@ -30,11 +25,15 @@ public class MoodAnalyser {
 		this.message = message;
 	}
 
-	public String analyseMood() {
-		if (message.toLowerCase().contains("sad")) {
-			return "Sad";
+	public static String analyseMood() {
+		try {
+			if (message.toLowerCase().contains("sad")) {
+				return "Sad";
+			} else {
+				return "Happy";
+			}
+		} catch (NullPointerException e) {
+			return "Exception Handled";
 		}
-		return "Happy";
 	}
-
 }
